@@ -10,11 +10,11 @@ interface Transaction {
   categories?: {
     name: string
     color: string
-  } | null
+  }[] | null
   accounts?: {
     name: string
     type: string
-  } | null
+  }[] | null
 }
 
 interface RecentTransactionsProps {
@@ -45,9 +45,9 @@ export function RecentTransactions({ transactions }: RecentTransactionsProps) {
             <div className="flex-1">
               <p className="font-medium text-sm">{transaction.description}</p>
               <div className="flex items-center space-x-2 text-xs text-muted-foreground">
-                <span>{transaction.categories?.name || 'Uncategorized'}</span>
+                <span>{transaction.categories?.[0]?.name || 'Uncategorized'}</span>
                 <span>•</span>
-                <span>{transaction.accounts?.name || 'Unknown'}</span>
+                <span>{transaction.accounts?.[0]?.name || 'Unknown'}</span>
                 <span>•</span>
                 <span>{formatDate(transaction.date)}</span>
               </div>

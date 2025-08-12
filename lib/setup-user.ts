@@ -19,7 +19,7 @@ export async function setupNewUser() {
   }
 
   // Call the function to copy default categories
-  const { error } = await supabase.rpc('copy_default_categories_for_user', {
+  const { error } = await (supabase as any).rpc('copy_default_categories_for_user', {
     user_uuid: user.id
   })
 

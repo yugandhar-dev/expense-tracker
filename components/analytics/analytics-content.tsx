@@ -187,8 +187,8 @@ export function AnalyticsContent() {
         }
       })
 
-      setTransactions(transactionsData as TransactionWithDetails[])
-      setBudgets(budgetsWithSpending as BudgetWithCategory[])
+      setTransactions(transactionsData as any)
+      setBudgets(budgetsWithSpending as any)
     } catch (err) {
       console.error('Error loading analytics:', err)
       setError(err instanceof Error ? err.message : 'Failed to load analytics')

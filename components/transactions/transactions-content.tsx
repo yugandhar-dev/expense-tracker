@@ -96,7 +96,7 @@ export function TransactionsContent() {
 
       if (transactionsError) throw transactionsError
 
-      setTransactions(transactionsData as TransactionWithDetails[])
+      setTransactions(transactionsData as any)
     } catch (err) {
       console.error('Error loading transactions:', err)
       setError(err instanceof Error ? err.message : 'Failed to load transactions')

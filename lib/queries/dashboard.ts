@@ -17,7 +17,7 @@ export async function getDashboardData() {
 
     if (!existingCategories || existingCategories.length === 0) {
       // Copy default categories for new user
-      await supabase.rpc('copy_default_categories_for_user', {
+      await (supabase as any).rpc('copy_default_categories_for_user', {
         user_uuid: user.id
       })
     }
@@ -79,8 +79,8 @@ export async function getDashboardData() {
   const spendingByCategory = currentMonthTransactions
     ?.filter(t => t.type === 'expense')
     .reduce((acc, transaction) => {
-      const category = transaction.categories?.name || 'Other'
-      const color = transaction.categories?.color || '#6b7280'
+      const category = (transaction.categories as any)?.[0]?.name || 'Other'
+      const color = (transaction.categories as any)?.[0]?.color || '#6b7280'
       acc[category] = (acc[category] || 0) + Number(transaction.amount)
       return acc
     }, {} as Record<string, number>) || {}
@@ -89,7 +89,7 @@ export async function getDashboardData() {
   const spendingByAccount = currentMonthTransactions
     ?.filter(t => t.type === 'expense')
     .reduce((acc, transaction) => {
-      const account = transaction.accounts?.name || 'Unknown'
+      const account = (transaction.accounts as any)?.[0]?.name || 'Unknown'
       acc[account] = (acc[account] || 0) + Number(transaction.amount)
       return acc
     }, {} as Record<string, number>) || {}

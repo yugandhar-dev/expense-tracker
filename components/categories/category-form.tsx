@@ -57,6 +57,8 @@ export function CategoryForm({ categoryId }: CategoryFormProps) {
 
   const loadCategory = async () => {
     try {
+      if (!categoryId) return
+      
       const supabase = createClient()
 
       // Get user first

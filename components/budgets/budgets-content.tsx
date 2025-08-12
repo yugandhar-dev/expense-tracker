@@ -71,7 +71,7 @@ export function BudgetsContent() {
         })
       )
 
-      setBudgets(budgetsWithSpending as BudgetWithCategory[])
+      setBudgets(budgetsWithSpending as any)
     } catch (err) {
       console.error('Error loading budgets:', err)
       setError(err instanceof Error ? err.message : 'Failed to load budgets')

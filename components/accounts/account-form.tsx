@@ -50,6 +50,8 @@ export function AccountForm({ accountId }: AccountFormProps) {
 
   const loadAccount = async () => {
     try {
+      if (!accountId) return
+      
       const supabase = createClient()
 
       // Get user first
