@@ -7,7 +7,7 @@ import { IncomeExpenseChart } from '@/components/charts/income-expense-chart'
 import { RecentTransactions } from '@/components/recent-transactions'
 import { 
   TrendingUp, 
-  TrendingDown, 
+ 
   DollarSign, 
   CreditCard, 
   PiggyBank,
@@ -222,7 +222,7 @@ export default async function DashboardPage() {
           </CardHeader>
           <CardContent>
             <p className="text-orange-700 dark:text-orange-300">
-              You're spending more than you're earning this month. 
+              You&apos;re spending more than you&apos;re earning this month. 
               Consider reviewing your expenses or increasing your income.
             </p>
           </CardContent>
